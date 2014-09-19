@@ -2,13 +2,16 @@ var settings = require('./ipfresh_server_settings.json');
 
 var ws = require('ws');
 
-var websocket = new ws.Server({'port': settings.port});
+var webSocketServer = new ws.Server({'port': settings.port});
 
-websocket.on('connection', function(socket) {
-	socket.on('message', function(message) {
-		console.log(socket.url + ": " + message);
-		socket.send(message);
-		socket.close(1000, "bla");
-	});
-});
+webSocketServer.on('connection', function(webSocket) {
+	webSocket.on('message', function(message) {
+		var remoteAddress = webSocket.upgradeReq.connection.remoteAddress;
+		
+		console.log(remoteAddress + ": " + message);
+
+		webSocket.send(message);
+		webSocket.close(1000, "bla");
+	})
+})
 
