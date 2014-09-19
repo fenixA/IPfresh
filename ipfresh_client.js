@@ -7,11 +7,11 @@ var ws = require('ws');
 var webSocket = new ws('ws://' + settings.host + ':' + settings.port);
 
 webSocket.on('close', function(code, data) {
-	console.log("Connection closed (" + code + "): " + data);
+    console.log("Connection closed (" + code + "): " + data);
 })
 
 webSocket.on('error', function(error) {
-	console.log(error);
+    console.error("Error: " + error);
 })
 
 webSocket.on('open', function() {
@@ -19,5 +19,5 @@ webSocket.on('open', function() {
 })
 
 webSocket.on('message', function(message) {
-	console.log(message);
+    console.log("Server: " + message);
 })
