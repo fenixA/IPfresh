@@ -10,7 +10,7 @@ webSocketServer.on('connection', function(webSocket) {
         var data = {};
             data['ip'] = webSocket.upgradeReq.connection.remoteAddress;
 
-        fs.writeFile(message, data, function() {
+        fs.writeFile('data/' + message, data, function() {
             webSocket.close();
         })
     })
