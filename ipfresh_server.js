@@ -1,5 +1,4 @@
 var settings = require('./ipfresh_server_settings.json');
-if (settings.debug) {console.log(settings)};
 
 var ws = require('ws');
 
@@ -9,6 +8,7 @@ websocket.on('connection', function(socket) {
 	socket.on('message', function(message) {
 		console.log(message);
 		socket.send(message);
+		socket.close(1000, "bla");
 	});
 });
 
