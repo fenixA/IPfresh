@@ -7,4 +7,6 @@ websocket.on('open', function() {
     websocket.sent(os.hostname());
 });
 
-// test
+websocket.on('message', function(message) {
+	console.log(message);
+});
