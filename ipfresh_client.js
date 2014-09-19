@@ -7,7 +7,7 @@ var ws = require('ws');
 var websocket = new ws('ws://' + settings.host + ':' + settings.port);
 
 websocket.on('close', function(code, data) {
-	console.log(code + data);
+	console.log("Connection closed (" + code + "): " + data);
 })
 
 websocket.on('error', function(error) {
