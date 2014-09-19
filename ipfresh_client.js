@@ -1,7 +1,10 @@
+//Loads the settings file
+var settings = require('./ipfresh_server_settings.json');
+
 var os = require('os');
 var ws = require('ws');
 
-var websocket = new ws('ws://vertigo.canopus.uberspace.de:65432');
+var websocket = new ws('ws://' + settings.host + ':' + settings.port);
 
 websocket.on('open', function() {
     websocket.sent(os.hostname());

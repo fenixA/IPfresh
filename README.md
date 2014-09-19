@@ -1,4 +1,4 @@
 IpFresh
 =======
 
-The README...
+Requires 'ws'!
