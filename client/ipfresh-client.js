@@ -1,4 +1,5 @@
 var settings = require('./settings.json');
+var debug = settings.debug;
 
 var os = require('os');
 var ws = require('ws');
@@ -6,8 +7,8 @@ var ws = require('ws');
 exports.start = function() {
     var webSocket = new ws('ws://' + settings.host + ':' + settings.port);
 
-    webSocket.on('close', function() {
-        console.log("disconnected");
+    webSocket.on('close', function(code, data) {
+        if (debug) console.log("disconnected (" + code + ")");
     });
 
     webSocket.on('error', function(error) {
@@ -15,11 +16,12 @@ exports.start = function() {
     });
 
     webSocket.on('message', function(message) {
-        console.log(message);
+        console.log("server: " + message);
     });
 
     webSocket.on('open', function() {
-        console.log("disconnected");
+        if (debug) console.log("connected (" + webSocket.url + ")");
+
         webSocket.send(os.hostname());
     });
 }
