@@ -7,7 +7,7 @@ exports.start = function() {
     var webSocket = new ws('ws://' + settings.host + ':' + settings.port);
 
     webSocket.on('close', function() {
-
+        console.log("disconnected");
     });
 
     webSocket.on('error', function(error) {
@@ -19,6 +19,7 @@ exports.start = function() {
     });
 
     webSocket.on('open', function() {
+        console.log("disconnected");
         webSocket.send(os.hostname());
     });
 }
