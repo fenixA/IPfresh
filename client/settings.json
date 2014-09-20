@@ -1,4 +1,5 @@
 {
+	"debug": false,
 	"host": "vertigo.canopus.uberspace.de",
 	"port": 64933
 }
