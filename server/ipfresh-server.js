@@ -7,10 +7,17 @@ exports.start = function() {
 	var webSocketServer = new ws.Server({'port': settings.port});
 
 	webSocketServer.on('connection', function(webSocket) {
+	    var remoteAddress = webSocket.upgradeReq.connection.remoteAddress;
+
+	    console.log(remoteAddress + " connected");
+
+	    webSocket.on('close', function() {
+	    	console.log(remoteAddress + " disconnected");
+	    });
+
 	    webSocket.on('message', function(message) {
-	        var remoteAddress = webSocket.upgradeReq.connection.remoteAddress;
-	        webSocket.send(remoteAddress);
+	        webSocket.send(message);
 	        //webSocket.close();
-	    })
-	})
+	    });
+	});
 }

@@ -1,4 +1,4 @@
-var ipfresh = require('./ipfresh-client');
+var ipfresh = require('./client/ipfresh-client');
 
 setInterval(function() {
     ipfresh.start();
