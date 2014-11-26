@@ -33,7 +33,7 @@ exports.start = function () {
 
 				hosts[host] = remoteAddress;
 
-				fs.writeFile('hosts.json', JSON.stringify(hosts, undefined, '\t'), function (err) {
+				fs.writeFile('db.json', JSON.stringify(hosts, undefined, '\t'), function (err) {
 					webSocket.close();
 				})
 			});
